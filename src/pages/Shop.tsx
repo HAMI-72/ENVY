@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Filter, ChevronDown, Grid, List, Star, Heart } from 'lucide-react';
+import { Filter, ChevronDown, Grid, List, Star, Heart, X } from 'lucide-react';
 import { products } from '../data/products';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
@@ -109,8 +109,29 @@ const Shop: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Mobile Search Bar */}
+        <div className="md:hidden mb-6">
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            const query = formData.get('search') as string;
+            if (query.trim()) {
+              window.location.href = `/shop?search=${encodeURIComponent(query.trim())}`;
+            }
+          }} className="flex items-center bg-white rounded-full px-4 py-3 shadow-sm border border-gray-200">
+            <Filter className="h-4 w-4 text-gray-400 mr-2" />
+            <input
+              name="search"
+              type="text"
+              placeholder="Search products..."
+              defaultValue={searchQuery}
+              className="bg-transparent outline-none text-gray-900 placeholder-gray-500 text-sm flex-1"
+            />
+          </form>
+        </div>
+
         {/* Breadcrumb */}
-        <nav className="mb-8">
+        <nav className="mb-8 hidden md:block">
           <div className="flex items-center space-x-2 text-sm text-gray-600">
             <span>Home</span>
             <span>/</span>
@@ -123,7 +144,7 @@ const Shop: React.FC = () => {
         </nav>
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-4">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               {searchQuery ? `Search results for "${searchQuery}"` : 'All Products'}
@@ -131,7 +152,7 @@ const Shop: React.FC = () => {
             <p className="text-gray-600">{filteredAndSortedProducts.length} products</p>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
             {/* View Mode Toggle */}
             <div className="flex bg-white rounded-lg border border-gray-200">
               <button
@@ -167,7 +188,7 @@ const Shop: React.FC = () => {
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center space-x-2 bg-white border border-gray-200 rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-50 transition-colors"
+              className="md:flex items-center space-x-2 bg-white border border-gray-200 rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-50 transition-colors hidden"
             >
               <Filter className="h-4 w-4" />
               <span>Filter</span>
@@ -175,15 +196,44 @@ const Shop: React.FC = () => {
           </div>
         </div>
 
+        {/* Mobile Filter and Sort */}
+        <div className="md:hidden flex items-center justify-between mb-6 gap-4">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center space-x-2 bg-white border border-gray-200 rounded-lg px-4 py-2 text-gray-900 hover:bg-gray-50 transition-colors flex-1"
+          >
+            <Filter className="h-4 w-4" />
+            <span>Filter</span>
+          </button>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black flex-1"
+          >
+            <option value="relevance">Relevance</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+
         <div className="flex gap-8">
           {/* Filters Sidebar */}
           {showFilters && (
-            <div className="w-64 bg-white rounded-lg shadow-sm p-6 h-fit">
-              <div className="flex justify-between items-center mb-6">
+            <div className="w-64 bg-white rounded-lg shadow-sm p-6 h-fit md:relative fixed inset-0 z-50 md:inset-auto md:z-auto overflow-y-auto md:overflow-visible">
+              <div className="md:hidden flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
                 <button
+                  onClick={() => setShowFilters(false)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 hidden md:block">Filters</h3>
+                <button
                   onClick={clearFilters}
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors hidden md:block"
                 >
                   Clear All
                 </button>
@@ -262,6 +312,16 @@ const Shop: React.FC = () => {
                   />
                   <span className="text-gray-700">In Stock Only</span>
                 </label>
+              </div>
+              
+              {/* Mobile Apply Button */}
+              <div className="md:hidden mt-6 space-y-3">
+                <button
+                  onClick={() => setShowFilters(false)}
+                  className="w-full bg-black text-white py-3 rounded-lg font-medium"
+                >
+                  Apply Filters
+                </button>
               </div>
             </div>
           )}

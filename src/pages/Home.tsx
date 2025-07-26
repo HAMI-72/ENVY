@@ -32,7 +32,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose ENVY</h2>
@@ -74,6 +74,113 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Mobile Hero Sections - Multiple full-screen fashion images */}
+      <div className="md:hidden">
+        {/* Hero Section 2 - Premium Shirts */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20 z-10"></div>
+          <img
+            src="https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Premium Shirts Collection"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          
+          <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-6">
+              Premium Shirts
+            </h1>
+            <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto">
+              Discover exceptional quality and timeless style
+            </p>
+            <Link
+              to="/shop"
+              className="inline-flex items-center bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              SHOP NOW
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </section>
+
+        {/* Hero Section 3 - Exclusive Collection */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20 z-10"></div>
+          <img
+            src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Exclusive Fashion Collection"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          
+          <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-6">
+              Exclusive Styles
+            </h1>
+            <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto">
+              Limited edition pieces for the discerning individual
+            </p>
+            <Link
+              to="/shop"
+              className="inline-flex items-center bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              SHOP NOW
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </section>
+
+        {/* Hero Section 4 - Essential Wardrobe */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20 z-10"></div>
+          <img
+            src="https://images.pexels.com/photos/1040473/pexels-photo-1040473.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Essential Wardrobe Collection"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          
+          <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-6">
+              Essential Wardrobe
+            </h1>
+            <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto">
+              Timeless pieces that define your signature style
+            </p>
+            <Link
+              to="/shop"
+              className="inline-flex items-center bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              SHOP NOW
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </section>
+
+        {/* Hero Section 5 - Luxury Collection */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20 z-10"></div>
+          <img
+            src="https://images.pexels.com/photos/1040424/pexels-photo-1040424.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Luxury Fashion Collection"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          
+          <div className="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-6">
+              Luxury Collection
+            </h1>
+            <p className="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto">
+              Indulge in the finest fabrics and craftsmanship
+            </p>
+            <Link
+              to="/shop"
+              className="inline-flex items-center bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            >
+              SHOP NOW
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </section>
+      </div>
 
       {/* Featured Collection */}
       <section className="py-20">

@@ -4,7 +4,6 @@ import { Search, ShoppingBag, Heart, User, Menu, X } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { cart, favorites, isLoggedIn, logout } = useApp();
   const navigate = useNavigate();
@@ -53,7 +52,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Search Bar */}
-          <form onSubmit={handleSearch} className="hidden lg:flex items-center bg-gray-50 rounded-full px-4 py-2 w-64">
+          <form onSubmit={handleSearch} className="hidden md:flex items-center bg-gray-50 rounded-full px-4 py-2 w-64">
             <Search className="h-4 w-4 text-gray-400 mr-2" />
             <input
               type="text"
@@ -64,8 +63,8 @@ const Header: React.FC = () => {
             />
           </form>
 
-          {/* Icons */}
-          <div className="flex items-center space-x-4">
+          {/* Desktop Icons */}
+          <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={handleUserClick}
               className="text-gray-900 hover:text-gray-600 transition-colors"
@@ -91,61 +90,9 @@ const Header: React.FC = () => {
               )}
             </Link>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-900 hover:text-gray-600 transition-colors"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4">
-            <form onSubmit={handleSearch} className="flex items-center bg-gray-50 rounded-full px-4 py-2 mb-4">
-              <Search className="h-4 w-4 text-gray-400 mr-2" />
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent outline-none text-gray-900 placeholder-gray-500 text-sm flex-1"
-              />
-            </form>
-            <nav className="space-y-4">
-              <Link
-                to="/shop"
-                className="block text-gray-900 hover:text-gray-600 font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                SHOP ALL
-              </Link>
-              <Link
-                to="/shop?category=shirts"
-                className="block text-gray-900 hover:text-gray-600 font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                SHIRTS
-              </Link>
-              <Link
-                to="/shop?category=pants"
-                className="block text-gray-900 hover:text-gray-600 font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                PANTS
-              </Link>
-              <Link
-                to="/shop?category=accessories"
-                className="block text-gray-900 hover:text-gray-600 font-medium transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                ACCESSORIES
-              </Link>
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   );
