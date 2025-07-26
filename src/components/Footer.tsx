@@ -39,6 +39,9 @@ const Footer: React.FC = () => {
               <Link to="/shop?category=pants" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Pants
               </Link>
+              <Link to="/shop?category=shoes" className="block text-gray-300 hover:text-white transition-colors text-sm">
+                Shoes
+              </Link>
               <Link to="/shop?category=accessories" className="block text-gray-300 hover:text-white transition-colors text-sm">
                 Accessories
               </Link>
@@ -71,16 +74,16 @@ const Footer: React.FC = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-gray-300 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
-                  123 Fashion Street, Style City, SC 12345
+                  placeholder address - 10001
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-gray-300 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">+1 (555) 123-4567</span>
+                <span className="text-gray-300 text-sm">+91 XXXXX XXXXX</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-gray-300 flex-shrink-0" />
-                <span className="text-gray-300 text-sm">hello@envy.com</span>
+                <span className="text-gray-300 text-sm">envyfashion@gmail.com</span>
               </div>
             </div>
           </div>

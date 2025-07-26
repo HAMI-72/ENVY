@@ -48,7 +48,7 @@ const Home: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Free Shipping</h3>
               <p className="text-gray-600">
-                Complimentary shipping on all orders over $100. Fast and reliable delivery worldwide.
+                Complimentary shipping on all orders over ₹3000. Fast and reliable delivery.
               </p>
             </div>
 
@@ -216,7 +216,7 @@ const Home: React.FC = () => {
 
             <div className="relative group overflow-hidden rounded-2xl">
               <img
-                src="https://images.pexels.com/photos/1040473/pexels-photo-1040473.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+                src="https://images.pexels.com/photos/6256275/pexels-photo-6256275.jpeg"
                 alt="Essential Collection"
                 className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500"
               />
