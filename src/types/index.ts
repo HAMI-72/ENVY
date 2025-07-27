@@ -1,3 +1,12 @@
+interface Comment {
+  id: number;
+  profile_pic: string;
+  text: string;
+  author: string;
+  date: Date;
+  rating: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -14,6 +23,7 @@ export interface Product {
   isEssential?: boolean;
   rating: number;
   reviews: number;
+  comments: Comment[];
 }
 
 export interface CartItem {

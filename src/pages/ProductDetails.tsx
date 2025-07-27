@@ -268,6 +268,43 @@ const ProductDetails: React.FC = () => {
           </div>
 
           {/*User Reviews*/}
+          <div className="p-4 space-y-6 border-t border-gray-300 pt-6">
+          <h1 className="text-3xl font-bold text-gray-900"></h1>
+
+            <div className="flex flex-col justify-between items-center ">
+              {product.comments.map((comment, i) => (
+                <div
+                key={i}
+                className="w-full h-fit px-3 py-3 border border-gray-900 rounded bg-gray-50 mb-6"
+                >
+                  <div className='flex items-center space-x-3 mb-3'>
+                    <img 
+                    src={comment.profile_pic}
+                    alt={comment.author}
+                    className='w-20 h-20 rounded-full object-cover'
+                    />
+
+                    <div>
+                      <p className="font-medium text-gray-900">{comment.author}</p>
+                      <p className="text-sm text-gray-500">{comment.date.toLocaleDateString()}</p>
+                      <div className="flex items-center">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-5 w-5 ${
+                              i < Math.floor(comment.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-700">{comment.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
